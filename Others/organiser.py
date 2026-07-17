@@ -50,15 +50,14 @@ def organize_folder(target_path_str):
 
         # Move unknown files to an "Others" folder
         if not moved and file_extension != "":
-            other_folder = tracked_dir / "Others"
-            other_folder.mkdir(exist_ok=True)
+            code_folder = tracked_dir / "Code"
+            code_folder.mkdir(exist_ok=True)
             try:
-                shutil.move(str(item), str(other_folder / item.name))
-                print(f"Moved: {item.name} -> Others/")
+                shutil.move(str(item), str(code_folder / item.name))
+                print(f"Moved: {item.name} -> Code/")
                 files_moved += 1
             except Exception as e:
                 print(f"Could not move {item.name}: {e}")
-
     print(f"\n Organization complete! Total files moved: {files_moved}")
 
 
